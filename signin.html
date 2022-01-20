@@ -1,0 +1,29 @@
+<html>
+<head>
+  <script>
+    function login() {
+      var username = document.getElementsByName("username").value;
+      var password = document.getElementsByName("password").value;
+      var params = "username=" + username + "&password=" + password;
+      console.log(params);
+    
+      var xhr = new XMLHttpRequest();
+      xhr.open('post', 'http://140.127.196.92:1234/login', true);
+      xhr.send(params);
+      xhr.onload = function() {
+        console.log(xhr.responseText);
+	window.name = xhr.responseText;
+	location.href = "order.html";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>請先登入</h1>
+    <p> 使用者名稱 : <input name="username" type="text" placeholder="您的使用者名稱"/>
+    <p> 密碼 : <input name="password" type="password" placeholder="您的密碼"/>
+  
+    <p> <button class="btn btn-primary" onclick="login()">submit</button>
+</body>
+</html>
